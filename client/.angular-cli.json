@@ -9,12 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-<<<<<<< HEAD
-        "favicon.ico"
-=======
         "favicon.ico",
         "source"
->>>>>>> 2f441ee0b26a807dc7ad553cd9c3e4911f4a7b10
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -62,8 +58,4 @@
     "styleExt": "css",
     "component": {}
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2f441ee0b26a807dc7ad553cd9c3e4911f4a7b10
