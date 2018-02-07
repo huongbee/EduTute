@@ -25,5 +25,5 @@ const ReCommentsSchema = new Schema({
     }
 })
 
-const Comments = mongoose.model('Comments', CommentsSchema)
-module.exports = Comments
+const ReComments = mongoose.model('ReComments', ReCommentsSchema)
+module.exports = ReComments
