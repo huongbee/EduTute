@@ -6,10 +6,12 @@ const Schema = mongoose.Schema
 const ReCommentsSchema = new Schema({
 
     subCourse: {
-        type: Schema.Types.ObjectId, ref: 'Comments'
+        type: Schema.Types.ObjectId, ref: 'Comments',
+        required: true
     },
     user: {
-        type: Schema.Types.ObjectId, ref: 'Users'
+        type: Schema.Types.ObjectId, ref: 'Users',
+        required: true
     },
     comment: {
         type: Text,

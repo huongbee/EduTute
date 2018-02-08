@@ -6,10 +6,12 @@ const Schema = mongoose.Schema
 const CommentsSchema = new Schema({
 
     subCourse: {
-        type: Schema.Types.ObjectId, ref: 'SubCourse'
+        type: Schema.Types.ObjectId, ref: 'SubCourse',
+        required: true
     },
     user: {
-        type: Schema.Types.ObjectId, ref: 'Users'
+        type: Schema.Types.ObjectId, ref: 'Users',
+        required: true
     },
     comment: {
         type: Text,

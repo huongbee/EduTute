@@ -1,3 +1,5 @@
+import { toUnicode } from "punycode";
+
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
@@ -8,7 +10,8 @@ const GroupCourseSchema = new Schema({
         required: true
     },
     course: {
-        type: Schema.Types.ObjectId, ref: 'Course'
+        type: Schema.Types.ObjectId, ref: 'Course',
+        required: true
     }, //belongsTo
     subCourses: [{
         type: Schema.Types.ObjectId, ref: 'SubCourse'

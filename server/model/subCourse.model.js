@@ -13,13 +13,16 @@ const SubCourseSchema = new Schema({
         unique: true
     },
     course: {
-        type: Schema.Types.ObjectId, ref: 'Course'
+        type: Schema.Types.ObjectId, ref: 'Course',
+        required: true
     }, //belongsTo
     teacher: {
-        type: Schema.Types.ObjectId, ref: 'Users'
+        type: Schema.Types.ObjectId, ref: 'Users',
+        required: true
     },//belongsTo
     groupCourse: {
-        type: Schema.Types.ObjectId, ref: 'Course'
+        type: Schema.Types.ObjectId, ref: 'Course',
+        required: true
     },//belongsTo
     chapters: [{
         type: Schema.Types.ObjectId, ref: 'Chapter'

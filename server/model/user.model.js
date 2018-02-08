@@ -19,14 +19,19 @@ const UsersSchema = new Schema({
         trim: true,
         required: true,
     },
-    subCourses: [
-        { type: Schema.Types.ObjectId, ref: 'SubCourse', default: null, required: false }
-    ],
+    subCourses: [{
+        type: Schema.Types.ObjectId,
+        ref: 'SubCourse',
+        default: null,
+        required: false
+    }],
     comments: [{
-        type: Schema.Types.ObjectId, ref: 'Comments'
+        type: Schema.Types.ObjectId,
+        ref: 'Comments'
     }], //hasMany
     reComments: [{
-        type: Schema.Types.ObjectId, ref: 'ReComments'
+        type: Schema.Types.ObjectId,
+        ref: 'ReComments'
     }], //hasMany
     birthdate: {
         type: Date

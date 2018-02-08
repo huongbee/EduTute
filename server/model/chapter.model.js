@@ -8,7 +8,9 @@ const ChapterSchema = new Schema({
         required: true
     },
     subCourse: {
-        type: Schema.Types.ObjectId, ref: 'SubCourse'
+        type: Schema.Types.ObjectId,
+        ref: 'SubCourse',
+        required: true
     },
     chapter: {
         type: Number,

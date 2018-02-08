@@ -16,7 +16,8 @@ const VideoSchema = new Schema({
         require: true
     },
     chapter: {
-        type: Schema.Types.ObjectId, ref: 'Chapter'
+        type: Schema.Types.ObjectId, ref: 'Chapter',
+        required: true
     },
     position: {
         type: Number,
