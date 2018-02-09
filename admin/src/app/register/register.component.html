@@ -8,7 +8,6 @@
           </div>
           <div class="card-body">
             <form class="form-horizontal" (ngSubmit)="register();" [formGroup]="RegisterForm">
-
               <div class="form-group row">
                 <label for="login-username" class="col-sm-4">Fullname</label>
                 <div class="col-sm-8">
@@ -24,26 +23,26 @@
               <div class="form-group row">
                 <label for="birthdate" class="col-sm-4">Birthdate</label>
                 <div class="col-sm-8">
-                  <input id="birthdate" type="date" name="birthdate">
+                  <input id="birthdate" type="date" name="birthdate" formControlName="birthdate">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="birthdate" class="col-sm-4">Gender</label>
                 <div class="col-sm-2">
                   <div class="i-checks">
-                    <input id="male" type="radio" value="male" name="gender" class="form-control-custom radio-custom">
+                    <input id="male" type="radio" value="male" name="gender" class="form-control-custom radio-custom" formControlName="gender">
                     <label for="male">Male</label>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="i-checks">
-                    <input id="female" type="radio" value="female" name="gender" class="form-control-custom radio-custom">
+                    <input id="female" type="radio" value="female" name="gender" class="form-control-custom radio-custom" formControlName="gender">
                     <label for="female">Female</label>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="i-checks">
-                    <input id="other" type="radio" value="other" name="gender" class="form-control-custom radio-custom">
+                    <input id="other" type="radio" value="other" name="gender" class="form-control-custom radio-custom" formControlName="gender">
                     <label for="other">Other</label>
                   </div>
                 </div>
@@ -51,31 +50,35 @@
               <div class="form-group row">
                 <label for="address" class="col-sm-4">Address</label>
                 <div class="col-sm-8">
-                  <input id="address" type="text" name="address" placeholder="Enter Address">
+                  <input id="address" type="text" name="address" formControlName="address" placeholder="Enter Address">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="phone" class="col-sm-4">Phone</label>
                 <div class="col-sm-8">
-                  <input id="phone" type="text" name="phone" placeholder="Enter Phone number">
+                  <input id="phone" type="text" name="phone" formControlName="phone" placeholder="Enter Phone number">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="password" class="col-sm-4">Password</label>
                 <div class="col-sm-8">
-                  <input id="password" type="password" name="password" placeholder="Enter Password" formControlName="password">
+                  <input id="password" type="password" name="password" placeholder="Enter Password" formControlName="password" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="repassword" class="col-sm-4">Confirm Password</label>
                 <div class="col-sm-8">
-                  <input id="repassword" type="password" name="repassword" placeholder="Re enter Password" required>
+                  <input id="repassword" type="password" name="rePassword" placeholder="Re enter Password" required formControlName="rePassword">
+                </div>
+                <div class="col-12" *ngIf="showPasswordNotMatch">
+                  <br>
+                  <p class="text-danger text-center">Password not match</p>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-10 offset-sm-2">
-                  <input type="submit" value="Register" class="btn btn-primary">
+                  <input type="submit" value="Register" [disabled]="RegisterForm.invalid || showPasswordNotMatch" class="btn btn-primary">
                 </div>
               </div>
             </form>
