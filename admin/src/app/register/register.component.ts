@@ -33,8 +33,9 @@ export class RegisterComponent implements OnInit {
         return rePasswordInput.touched && (rePasswordInput.value !== passwordInput.value);
     }
     signUp() {
-        //console.log(this.registerForm.value)
-        this.user.signUp(this.registerForm.value);
+        this.user.signUp(this.registerForm.value)
+            .then(user => { console.log(user) })
+            .catch(err => console.log(err));
     }
 
 }

@@ -1,10 +1,12 @@
 {
+  "name": "server",
+  "version": "1",
+  "main": "server.js",
+  "author": "Huong",
+  "license": "MIT",
+  "private": true,
   "dependencies": {
-    "express": "^4.16.2",
-    "http": "^0.0.0",
-    "mongoose": "^5.0.3"
-  },
-  "scripts": {
-    "start": "node server.js"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
   }
 }

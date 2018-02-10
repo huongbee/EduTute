@@ -12,7 +12,7 @@ export class UserInfo {
     password: string
 }
 export interface UserInfoAction extends Action {
-    type: 'USER_SIGN_IN' | 'USER_SIGN_OUT' | 'USER_UPDATE_INFO';
+    type: 'USER_SIGN_IN' | 'USER_SIGN_UP' | 'USER_SIGN_OUT' | 'USER_UPDATE_INFO';
     user?: UserInfo | null;
 }
 
@@ -28,6 +28,7 @@ export interface ServerResponse {
 }
 
 export interface UserResponseFromServer extends ServerResponse {
+
     user: {
         __id: string;
         fullname: string;

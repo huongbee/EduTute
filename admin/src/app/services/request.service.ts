@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { SERVER_URL } from '../../server.setting';
-import { ServerResponse } from './server';
-import "rxjs/add/operator/toPromise";
+import { ServerResponse } from './helper';
+//import "rxjs/add/operator/toPromise";
 
 @Injectable()
 
@@ -10,12 +10,14 @@ export class RequestWithToken {
     constructor(private http: Http) { }
 
     get(subURL: String): Promise<ServerResponse> {
+
         return this.http.get(`${SERVER_URL}${subURL}`, getHeaders())
             .toPromise()
             .then(res => res.json(), res => res.json());
     }
 
     post(subURL: String, body: Object): Promise<ServerResponse> {
+        //alert(`${SERVER_URL}${subURL}`)
         return this.http.post(`${SERVER_URL}${subURL}`, JSON.stringify(body), getHeaders())
             .toPromise()
             .then(res => res.json(), res => res.json());
@@ -34,6 +36,9 @@ export class RequestWithToken {
     }
 }
 
+// function getHeaders() {
+//     return new Headers({ 'Content-Type': 'application/json' })
+// }
 function getHeaders() {
     const token = localStorage.getItem('token');
     const headers = new Headers();
