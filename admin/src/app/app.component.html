@@ -108,7 +108,13 @@
     </div>
   </div>
 </nav>
-<app-home *ngIf="adminLogin"></app-home>
+<router-outlet>
+</router-outlet>
 
-<!-- <app-login *ngIf="!adminLogin"></app-login> -->
-<app-register *ngIf="!adminLogin"></app-register>
+<!-- <ng-content *ngIf="adminLogin">
+  <app-home></app-home>
+</ng-content>
+
+<ng-content *ngIf="!adminLogin">
+  <app-register></app-register>
+</ng-content> -->

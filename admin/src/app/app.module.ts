@@ -1,29 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms"
+import { FormsModule } from "@angular/forms";
+import { StoreModule } from '@ngrx/store';
 
-
+import { AppRoutingModule } from './app.routing'
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { routing } from './app.routing';
-import { UserService } from "./services/user.service"
+
+import { userInfoReducer } from "./ngrx/reducers/userInfo";
+// import { HomeComponent } from "./home/home.component";
+// import { RegisterComponent } from "./register/register.component";
+// import { LoginComponent } from "./login/login.component"
+import { CourseComponent } from './course/course.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    RegisterComponent,
-    LoginComponent
+    // LoginComponent,
+    // RegisterComponent,
+    // HomeComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    routing
+    AppRoutingModule,
+    StoreModule.forRoot({
+      userInfo: userInfoReducer
+    }),
+
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

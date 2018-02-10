@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Action } from "@ngrx/store"
+
 @Injectable()
 export class UserInfo {
     fullname: string;
@@ -8,6 +10,16 @@ export class UserInfo {
     gender: string
     phone: string
     password: string
+}
+export interface UserInfoAction extends Action {
+    type: 'USER_SIGN_IN' | 'USER_SIGN_OUT' | 'USER_UPDATE_INFO';
+    user?: UserInfo | null;
+}
+
+
+export interface AppState {
+    userInfo: UserInfo;
+    expiredTime: number;
 }
 
 export interface ServerResponse {
@@ -25,5 +37,6 @@ export interface UserResponseFromServer extends ServerResponse {
         gender: string;
         phone: string;
         address: string;
+        token: string;
     };
 }
