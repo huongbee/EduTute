@@ -37,6 +37,6 @@ export class UserService {
                 this.store.dispatch(userInfoAction);
                 this.router.navigate(['/admin/login']);
             })
-            .catch(err => alert('Khong the truy cap toi server'));
+            .catch(err => alert('eeerrr'));
     }
 }
