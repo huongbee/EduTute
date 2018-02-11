@@ -40,7 +40,9 @@ export class RequestWithToken {
 //     return new Headers({ 'Content-Type': 'application/json' })
 // }
 function getHeaders() {
+    //const token = localStorage.getItem('token');
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    //if (token) headers.append('token', token);
     return { headers };
 }

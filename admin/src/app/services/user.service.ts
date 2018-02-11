@@ -26,7 +26,7 @@ export class UserService {
         return this.request.post('/admin/register', { fullname, email, birthdate, address, gender, phone, password })
             .then((response: UserResponseFromServer) => {
                 const { message, user } = response;
-                console.log(response)
+                //console.log(response)
 
                 if (!message) return alert('Email da co nguoi su dung');
 

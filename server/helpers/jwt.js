@@ -1,8 +1,8 @@
-const sign, verify = require('jsonwebtoken')
+const { sign, verify } = require('jsonwebtoken')
 
 const KEY = 'hihihihihihihiiiiiiiii';
 
-export function createToken(obj) {
+function createToken(obj) {
     return new Promise((resolve, reject) => {
         sign(obj, KEY, { expiresIn: '2 days' }, (err, token) => {
             if (err) return reject(err);
@@ -11,7 +11,7 @@ export function createToken(obj) {
     });
 }
 
-export function verifyToken(token) {
+function verifyToken(token) {
     return new Promise((resolve, reject) => {
         verify(token, KEY, (err, obj) => {
             if (err) return reject(err);
@@ -19,3 +19,4 @@ export function verifyToken(token) {
         });
     });
 }
+module.exports = { createToken, verifyToken }

@@ -8,7 +8,7 @@ router.get('/register', (req, res) => {
 })
 router.post('/register', (req, res, next) => {
     console.log('Server receive!')
-    const { fullname, email, birthdate, address, gender, phone, password } = req.body
+    const { fullname, email, birthdate, address, gender, phone, password, token } = req.body
     console.log(email)
 
     User.findOne({ email })
@@ -24,8 +24,12 @@ router.post('/register', (req, res, next) => {
             }
             else res.status(404).send({ message: false, user: false })
         })
-        .catch(err => res.status(404).send({ message: false, error: err.message })
-        )
+        .catch(err => {
+            res.status(404).send({
+                message: false, error: err.message
+            })
+        })
+
 })
 
 module.exports = router
