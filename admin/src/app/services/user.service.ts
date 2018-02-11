@@ -25,18 +25,16 @@ export class UserService {
 
         return this.request.post('/admin/register', { fullname, email, birthdate, address, gender, phone, password })
             .then((response: UserResponseFromServer) => {
-                const { success, user } = response;
-                console.log(user)
+                const { message, user } = response;
+                console.log(response)
 
-                localStorage.setItem('token', user.token);
-
-                if (!success) return alert('Email da co nguoi su dung');
+                if (!message) return alert('Email da co nguoi su dung');
 
                 const userInfoAction: UserInfoAction = { type: 'USER_SIGN_UP', user: { fullname, email, birthdate, address, gender, phone, password } };
 
                 this.store.dispatch(userInfoAction);
                 this.router.navigate(['/admin/login']);
             })
-            .catch(err => alert('eeerrr'));
+            .catch(err => alert("Cannot connect to server"));
     }
 }

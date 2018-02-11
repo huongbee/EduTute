@@ -9,7 +9,6 @@ import { UserService } from "../services/user.service";
 })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
-    // user: UserService;
 
     constructor(private user: UserService) {
     }
@@ -34,8 +33,8 @@ export class RegisterComponent implements OnInit {
     }
     signUp() {
         this.user.signUp(this.registerForm.value)
-            .then(user => { console.log(user) })
-            .catch(err => console.log(err));
+        // .then(user => { console.log(user) })
+        // .catch(err => console.log(err));
     }
 
 }

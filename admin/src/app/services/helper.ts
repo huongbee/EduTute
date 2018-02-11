@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+//import { Injectable } from '@angular/core';
 import { Action } from "@ngrx/store"
 
-@Injectable()
+//@Injectable()
 export class UserInfo {
     fullname: string;
     email: string;
@@ -23,7 +23,7 @@ export interface AppState {
 }
 
 export interface ServerResponse {
-    success: boolean;
+    message: boolean;
     [propName: string]: any;
 }
 
@@ -38,6 +38,5 @@ export interface UserResponseFromServer extends ServerResponse {
         gender: string;
         phone: string;
         address: string;
-        token: string;
     };
 }

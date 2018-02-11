@@ -3,12 +3,12 @@ const router = express.Router();
 const User = require('../model/user.model')
 const bcrypt = require("bcrypt")
 
-router.get('hihi', () => {
-    console.log('received!')
+router.get('/register', (req, res) => {
+    res.send('received!')
 })
 router.post('/register', (req, res, next) => {
     console.log('Server receive!')
-    const { fullname, email, birthdate, address, gender, phone, password, token } = req.body
+    const { fullname, email, birthdate, address, gender, phone, password } = req.body
     console.log(email)
 
     User.findOne({ email })
@@ -19,15 +19,13 @@ router.post('/register', (req, res, next) => {
                     .then(pwHash => {
                         new User({ fullname, email, birthdate, address, gender, phone, password: pwHash })
                             .save()
-                            .then(() => res.redirect('login'))
+                            .then((user) => res.status(200).send({ message: true, user: user }))
                     })
             }
-            else res.send('Email exists!!!!')
+            else res.status(404).send({ message: false, user: false })
         })
-        .catch(err => {
-            res.send(err)
-        })
-
+        .catch(err => res.status(404).send({ message: false, error: err.message })
+        )
 })
 
 module.exports = router
