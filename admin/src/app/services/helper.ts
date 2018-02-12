@@ -9,7 +9,7 @@ export class UserInfo {
     address: string
     gender: string
     phone: string
-    password: string
+    password?: string
 }
 export interface UserInfoAction extends Action {
     type: 'USER_SIGN_IN' | 'USER_SIGN_UP' | 'USER_SIGN_OUT' | 'USER_UPDATE_INFO';
@@ -23,7 +23,8 @@ export interface AppState {
 }
 
 export interface ServerResponse {
-    message: boolean;
+    error: boolean;
+    message: string;
     [propName: string]: any;
 }
 
@@ -34,10 +35,10 @@ export interface UserResponseFromServer extends ServerResponse {
         fullname: string;
         email: string;
         birthdate: string;
-        password: string;
+        password?: string;
         gender: string;
         phone: string;
         address: string;
-        //token: string;
+        token?: string;
     };
 }

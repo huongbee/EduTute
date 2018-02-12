@@ -10,6 +10,7 @@ import { UserService } from "../services/user.service";
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
 
+
     constructor(private user: UserService) {
     }
 

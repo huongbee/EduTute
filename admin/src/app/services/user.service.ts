@@ -25,11 +25,10 @@ export class UserService {
 
         return this.request.post('/admin/register', { fullname, email, birthdate, address, gender, phone, password })
             .then((response: UserResponseFromServer) => {
-                const { message, user } = response;
+                const { error, message, user } = response;
                 //console.log(response)
-
-                if (!message) return alert('Email da co nguoi su dung');
-
+                if (error) return alert(message);
+                localStorage.setItem('token', user.token);
                 const userInfoAction: UserInfoAction = { type: 'USER_SIGN_UP', user: { fullname, email, birthdate, address, gender, phone, password } };
 
                 this.store.dispatch(userInfoAction);

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { SERVER_URL } from '../../server.setting';
 import { ServerResponse } from './helper';
-//import "rxjs/add/operator/toPromise";
 
 @Injectable()
 
@@ -40,9 +39,9 @@ export class RequestWithToken {
 //     return new Headers({ 'Content-Type': 'application/json' })
 // }
 function getHeaders() {
-    //const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //if (token) headers.append('token', token);
+    if (token) headers.append('AUTHENTICATION', token);
     return { headers };
 }
