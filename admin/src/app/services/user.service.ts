@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { UserInfo, UserResponseFromServer, UserInfoAction, AppState } from "./helper";
+import { UserInfo, UserResponseFromServer, UserInfoAction, AppState } from "./userHelper";
 import { RequestWithToken } from "./request.service";
 import { Http, Headers } from "@angular/http";
 import "rxjs/add/operator/toPromise";
@@ -20,7 +20,7 @@ export class UserService {
             .then((response: UserResponseFromServer) => {
                 const { error, message, user } = response
                 if (error) return alert(message);
-                console.log(user);
+                //console.log(user);
 
                 const { fullname, email, birthdate, address, gender, phone, password } = user
                 const userInfoAction: UserInfoAction = { type: 'USER_SIGN_IN', user: { fullname, email, birthdate, address, gender, phone, password } };
@@ -48,5 +48,12 @@ export class UserService {
                 this.router.navigate(['/admin/login']);
             })
             .catch(err => alert("Cannot connect to server"));
+    }
+
+    logOut() {
+        localStorage.removeItem('token');
+        const userInfoAction: UserInfoAction = { type: 'USER_SIGN_OUT' };
+        this.store.dispatch(userInfoAction);
+        this.router.navigate(['/admin/login']);
     }
 }

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app.routing'
 import { AppComponent } from './app.component';
 
 import { userInfoReducer } from "./ngrx/reducers/userInfo";
-import { CourseComponent } from './course/course.component'
+import { CourseComponent } from './course/course.component';
 
 @NgModule({
   declarations: [

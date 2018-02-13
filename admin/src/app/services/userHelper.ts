@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+//import { Injectable } from '@angular/core';
 import { Action } from "@ngrx/store"
 
-@Injectable()
+//@Injectable()
 export class UserInfo {
     fullname: string;
     email: string;

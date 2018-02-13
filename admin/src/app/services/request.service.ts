@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { SERVER_URL } from '../../server.setting';
-import { ServerResponse } from './helper';
+import { ServerResponse } from './userHelper';
 
 @Injectable()
 
