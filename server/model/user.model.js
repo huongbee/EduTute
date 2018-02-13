@@ -83,12 +83,20 @@ class User extends UserModel {
     }
 
     async userInfor(userObj) {
-        // console.log(userObj)
+        //console.log(userObj)
         const userInfo = userObj.toObject()
         await delete userInfo.password;
         const token = await createToken({ _id: userInfo._id });
         userInfo.token = token;
         return userInfo;
+    }
+    async signIn(email, password) {
+        const user = await User.findOne({ email })
+        if (!user) throw new Error("Cannot find email")
+        const check = bcrypt.compareSync(password, user.password);
+        console.log(check);
+        if (!check) throw new Error('Password invalid!')
+        return this.userInfor(user)
     }
 }
 module.exports = new User

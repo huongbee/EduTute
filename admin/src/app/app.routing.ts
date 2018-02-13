@@ -12,7 +12,7 @@ import { HomeComponent } from "./home/home.component"
 
 const APP_ROUTES: Routes = [
     { path: '', redirectTo: "admin/login", pathMatch: "full" },
-    { path: "#", component: HomeComponent },
+    { path: "home", component: HomeComponent },
     { path: "admin/register", component: RegisterComponent },
     { path: "admin/login", component: LoginComponent }
 ]
