@@ -3,28 +3,28 @@
     <div class="form-outer text-center d-flex align-items-center">
       <div class="form-inner">
         <div class="logo text-uppercase">
-          <span>Admin</span>
-          <strong class="text-primary">Login</strong>
+          <span>Login</span>
+          <strong class="text-primary">Form</strong>
         </div>
-        <form id="login-form" method="post" [formGroup]="LoginForm" (ngSubmit)="signIn()">
+        <form id="login-form" (ngSubmit)="signIn()" [formGroup]="loginForm">
           <div class="form-group">
             <label for="login-username" class="label-custom">Email</label>
-            <input id="login-username" type="email" name="loginUsername" required formControlName="email">
+            <input id="login-username" type="email" required name="loginUsername" placeholder="Enter email" formControlName="email">
           </div>
           <div class="form-group">
             <label for="login-password" class="label-custom">Password</label>
             <input id="login-password" type="password" name="loginPassword" required formControlName="password">
           </div>
-          <button id="login" type="submit" class="btn btn-primary" [disabled]="LoginForm.invalid">Login</button>
+          <button id="login" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
           <!-- This should be submit button but I replaced it with <a> for demo purposes-->
         </form>
         <a href="#" class="forgot-pass">Forgot Password?</a>
         <small>Do not have an account? </small>
-        <a href="" class="signup">Signup</a>
+        <a href="admin/register" class="signup">Signup</a>
       </div>
       <div class="copyrights text-center">
         <p>Design by
-          <a href="https://www.facebook.com/huongnguyen.nh" class="external">Huong</a>
+          <a href="https://www.facebook.com/huongnguyen.nh" class="external">Bootstrapious</a>
         </p>
 
       </div>

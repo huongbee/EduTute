@@ -8,8 +8,8 @@ import { RequestWithToken } from "./services/request.service"
 import { AuthGuard } from "./services/auth.service"
 
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from "./home/home.component"
+import { LoginComponent } from "./login/login.component";
 
 const APP_ROUTES: Routes = [
     { path: '', redirectTo: "admin/login", pathMatch: "full" },
@@ -25,8 +25,8 @@ const APP_ROUTES: Routes = [
 @NgModule({
     declarations: [
         RegisterComponent,
-        LoginComponent,
-        HomeComponent
+        HomeComponent,
+        LoginComponent
     ],
     imports: [
         RouterModule.forRoot(APP_ROUTES),
