@@ -16,6 +16,7 @@ export class RequestWithToken {
     }
 
     post(subURL: String, body: Object): Promise<ServerResponse> {
+        // console.log(body)
         //alert(`${SERVER_URL}${subURL}`)
         return this.http.post(`${SERVER_URL}${subURL}`, JSON.stringify(body), getHeaders())
             .toPromise()
@@ -42,6 +43,6 @@ function getHeaders() {
     const token = localStorage.getItem('token');
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    if (token) headers.append('AUTHENTICATION', token);
+    if (token) headers.append('token', token);
     return { headers };
 }

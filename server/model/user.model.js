@@ -74,14 +74,6 @@ class User extends UserModel {
         const user = await User.findOne({ 'email': email })
         if (user) throw new Error('Email exits!!!!!!')
     }
-
-    async signUp(fullname, email, birthdate, address, gender, phone, password) {
-        await this.checkEmailExist(email)
-        const pwHash = await bcrypt.hash(password, 10)
-        const user = await new User({ fullname, email, birthdate, address, gender, phone, password: pwHash }).save()
-        return this.userInfor(user)
-    }
-
     async userInfor(userObj) {
         //console.log(userObj)
         const userInfo = userObj.toObject()
@@ -90,6 +82,14 @@ class User extends UserModel {
         userInfo.token = token;
         return userInfo;
     }
+    async signUp(fullname, email, birthdate, address, gender, phone, password) {
+        await this.checkEmailExist(email)
+        const pwHash = await bcrypt.hash(password, 10)
+        const user = await new User({ fullname, email, birthdate, address, gender, phone, password: pwHash }).save()
+        return this.userInfor(user)
+    }
+
+
     async signIn(email, password) {
         const user = await User.findOne({ email })
         if (!user) throw new Error("Cannot find email")

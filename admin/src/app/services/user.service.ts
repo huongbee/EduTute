@@ -15,6 +15,7 @@ export class UserService {
         private store: Store<AppState>,
         private router: Router
     ) { }
+
     signIn(email: string, password: string) {
         return this.request.post('/admin/login', { email, password })
             .then((response: UserResponseFromServer) => {
@@ -25,6 +26,7 @@ export class UserService {
                 const { fullname, email, birthdate, address, gender, phone, password } = user
                 const userInfoAction: UserInfoAction = { type: 'USER_SIGN_IN', user: { fullname, email, birthdate, address, gender, phone, password } };
 
+                localStorage.setItem('token', user.token)
                 this.store.dispatch(userInfoAction);
                 this.router.navigate(['/home']);
 
@@ -56,4 +58,5 @@ export class UserService {
         this.store.dispatch(userInfoAction);
         this.router.navigate(['/admin/login']);
     }
+
 }

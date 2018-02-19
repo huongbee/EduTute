@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import "rxjs/"
 //import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx'
 import { Store } from '@ngrx/store';
@@ -16,6 +17,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return Observable.from(this.userInfo).map(u => {
+            //console.log(u)
             if (!u) {
                 this.router.navigate(['/admin/login']);
                 return false;

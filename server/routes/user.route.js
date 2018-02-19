@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../model/user.model')
 const bcrypt = require("bcrypt")
+const { createToken } = require('../helpers/jwt')
 
 router.get('/register', (req, res) => {
     res.send('received!')
@@ -31,9 +32,13 @@ router.post('/login', (req, res, next) => {
     console.log(email)
     User.signIn(email, password)
         .then(user => {
+            const token = user.token
+            // console.log(token)
+            // console.log(user)
             res.status(200).send({
                 error: false, message: true, user
             })
+
         })
         .catch(err => {
             res.status(400).send({

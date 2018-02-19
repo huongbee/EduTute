@@ -9,12 +9,16 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
-  constructor(private user: UserService) { }
+  constructor(private user: UserService) {
+    const token = localStorage.getItem('token');
+    if (token != '') localStorage.removeItem('token');
+    //console.log(token)
+  }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.email),
-      password: new FormControl('', Validators.required)
+      email: new FormControl('huongnguyenak96@gmail.com', Validators.email),
+      password: new FormControl('111111', Validators.required)
     })
   }
 
@@ -22,5 +26,4 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value
     this.user.signIn(email, password);
   }
-
 }

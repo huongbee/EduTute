@@ -17,12 +17,21 @@ export class AppComponent {
     title = 'app';
     adminLogin: Observable<boolean>;
 
+
     ngOnInit() {
         this.adminLogin = this.store.select('userInfo').map(userInfo => !!userInfo);
         this.adminLogin.subscribe(console.log);
+
+        const token = localStorage.getItem('token');
+        //if (token != '') localStorage.removeItem('token');
+        console.log(token)
     }
     constructor(private user: UserService, private store: Store<AppState>) {
 
     }
+    logOut() {
+        this.user.logOut()
+    }
+
 
 }

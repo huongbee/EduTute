@@ -127,7 +127,9 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="login.html" class="nav-link logout">Logout
+
+              <a (click)="logOut();" routerLink="/admin/login" class="nav-link logout">
+                Logout
                 <i class="fa fa-sign-out"></i>
               </a>
             </li>
